@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { GlobalContext } from "./Gstate";
+
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import BotStatus from "./pages/BotStatus";
+import TaskAllocation from "./pages/TaskAllocation";
+import TaskQueue from "./pages/TaskQueue";
+import Analytics from "./pages/Analytics";
+
+import Navbar from "./pages/Navbar";
+import "./styles/global.css";
 
 function App() {
+  const { isLoggedIn } = useContext(GlobalContext);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+
+      {isLoggedIn && <Navbar />}
+
+      <Routes>
+        <Route path="/" element={<Login />} />
+
+        <Route
+          path="/dashboard"
+          element={isLoggedIn ? <Dashboard /> : <Navigate to="/" />}
+        />
+
+        <Route path="/bots" element={<BotStatus />} />
+        <Route path="/allocate" element={<TaskAllocation />} />
+        <Route path="/queue" element={<TaskQueue />} />
+        <Route path="/analytics" element={<Analytics />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

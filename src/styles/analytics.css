@@ -1,0 +1,10 @@
+.analytics-page {
+  padding: 30px;
+  text-align: center;
+}
+
+.analytics-chart-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}

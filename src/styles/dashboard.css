@@ -1,0 +1,25 @@
+.dashboard {
+  padding: 30px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.card {
+  text-align: center;
+  padding: 30px;
+}
+
+.card:nth-child(1) { border-left: 5px solid #4a6cf7; }
+.card:nth-child(2) { border-left: 5px solid #3fc67a; }
+.card:nth-child(3) { border-left: 5px solid #ffcc00; }
+.card:nth-child(4) { border-left: 5px solid #ff5252; }
+.card:nth-child(5) { border-left: 5px solid #9c27b0; }
+
+.card h3 {
+  font-size: 25px;
+}

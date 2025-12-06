@@ -1,0 +1,22 @@
+.task-page {
+  padding: 30px;
+}
+
+.task-form {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.task-card {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-bottom: 15px;
+}
+
+.task-card p {
+  margin-bottom: 5px;
+}

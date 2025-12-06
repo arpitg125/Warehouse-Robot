@@ -1,0 +1,66 @@
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../public/rback.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.login-box {
+  width: 350px;
+  padding: 40px;
+  background: rgba(90, 92, 228, 0.253);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  animation: fadeIn 0.4s ease;
+  text-align: center;
+}
+
+.login-box h2 {
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.subtitle {
+  color: #eaeaea;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 14px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.8);
+  font-size: 15px;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px;
+  background: #1a237e;
+  color: white;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.login-box button:hover {
+  background: #0f1766;
+  transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
