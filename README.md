@@ -1,70 +1,83 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Tech Stack
 
-In the project directory, you can run:
+React.js – UI development
 
-### `npm start`
+React Router v6 – Routing & protected routes
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Context API – Global state (login state + username)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+CSS – Styling
 
-### `npm test`
+src/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    App.js       : Root router + routes
+    Gstate.js    : GlobalContext ( Auth state)
 
-### `npm run build`
+   pages/
+   
+      
+	  Login.js            : Login screen
+	  Dashboard.js        : Main bot performance overview
+	  BotStatus.js        : List of bots & live status
+	  TaskAllocation.js   : Assign tasks to bots
+	  TaskQueue.js        : Queue visualization
+	  Analytics.js        : Charts & metrics
+	  Navbar.js           : Top navigation bar
+	  
+styles/
+      
+	  css
+	  
+This project uses the Context API to manage authentication state across pages.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Login
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+User enters credentials in Login.js.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+On success:
 
-### `npm run eject`
+setIsLoggedIn(true)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+setUsername()
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+User is redirected to:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+/app/dashboard
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Global State
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Gstate.js stores:
 
-### Code Splitting
+isLoggedIn – Boolean
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+username – Logged-in user’s name
 
-### Analyzing the Bundle Size
+All components access this data using:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+const { isLoggedIn, username } = useContext(GlobalContext);
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+4. Protected Routes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Inside App.js:
 
-### Deployment
+If not logged in → Redirect to /
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+If logged in → Show layout + pages
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+5. Navbar
+
+Uses global context to display username
+
+Logout button sets:
+
+setIsLoggedIn(false);
+
+and redirects to /
